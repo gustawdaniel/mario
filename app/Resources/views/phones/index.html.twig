@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Phones list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for phone in phones %}
+            <tr>
+                <td><a href="{{ path('crud_phones_show', { 'id': phone.id }) }}">{{ phone.id }}</a></td>
+                <td>{{ phone.name }}</td>
+                <td>{{ phone.number }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('crud_phones_show', { 'id': phone.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('crud_phones_edit', { 'id': phone.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('crud_phones_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

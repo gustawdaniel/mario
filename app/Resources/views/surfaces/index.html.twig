@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Surfaces list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for surface in surfaces %}
+            <tr>
+                <td><a href="{{ path('crud_surfaces_show', { 'id': surface.id }) }}">{{ surface.id }}</a></td>
+                <td>{{ surface.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('crud_surfaces_show', { 'id': surface.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('crud_surfaces_edit', { 'id': surface.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('crud_surfaces_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
