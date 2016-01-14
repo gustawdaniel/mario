@@ -1,24 +1,39 @@
+{#{% if req is defined %}#}
+    {#{% dump(request) %}#}
+    {#dd#}
+{#{% endif %}#}
+
 <table class="table">
     <tr>
         <td>Nazwa</td>
+        <td>Aktualizuj</td>
         <td>Usuń</td>
         {#<td>Aktualizuj</td>#}
     </tr>
+    <form method="POST" action="">
     {% for e in entity %}
-    <tr>
-        <td> <textarea rows="1">
-{{ e.name }}</textarea>
-            </td>
-        <td><div class="btn btn-danger btn-block btn-sm">Delete</div></td>
-
-    </tr>
+        <div id="row_{{ e.id }}">
+            <tr>
+                <td>
+                    <textarea rows="1" name="{{ e.id }}">{{ e.name }}</textarea>
+                </td>
+                <td>
+                    <div class="btn btn-warning btn-block btn-sm">Aktualizuj</div>
+                </td>
+                <td>
+                    <input value="Usuń" type="submit" id="rm_{{ e.id }}" class="btn btn-danger btn-block btn-sm">
+                </td>
+            </tr>
+        </div>
     {% endfor %}
+    </form>
 </table>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="btn btn-block btn-sm btn-success">Dodaj</div>
     </div>
-    <div class="col-sm-6">
-        <td><div class="btn btn-warning btn-block btn-sm">Aktualizuj</div></td>
-    </div>
+    {#<div class="col-sm-6">#}
+        {#<td><div class="btn btn-warning btn-block btn-sm">Aktualizuj</div></td>#}
+    {#</div>#}
 </div>
+
