@@ -87,9 +87,12 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     {% javascripts
         'bundles/app/js/01_jquery-1.11.1.min.js'
-        'bundles/app/js/03_bootstrap.min.js' %}
+        'bundles/app/js/03_bootstrap.min.js'
+        'bundles/app/js/09_ajax.js'%}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

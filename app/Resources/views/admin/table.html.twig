@@ -10,7 +10,7 @@
         <td>Usuń</td>
         {#<td>Aktualizuj</td>#}
     </tr>
-    <form method="POST" action="">
+    {#<form method="POST" action="">#}
     {% for e in entity %}
         <div id="row_{{ e.id }}">
             <tr>
@@ -21,12 +21,12 @@
                     <div class="btn btn-warning btn-block btn-sm">Aktualizuj</div>
                 </td>
                 <td>
-                    <input value="Usuń" type="submit" id="rm_{{ e.id }}" class="btn btn-danger btn-block btn-sm">
+                    <input type="submit" name="delete" value="Usuń" id="rm_{{ e.id }}" class="btn btn-danger btn-block btn-sm">
                 </td>
             </tr>
         </div>
     {% endfor %}
-    </form>
+    {#</form>#}
 </table>
 <div class="row">
     <div class="col-sm-12">
