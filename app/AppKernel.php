@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
 
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-
+            new Ali\DatatableBundle\AliDatatableBundle(),
 //            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 //            new Sonata\CoreBundle\SonataCoreBundle(),
 //            new Sonata\jQueryBundle\SonatajQueryBundle(),

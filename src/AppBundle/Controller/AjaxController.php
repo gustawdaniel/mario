@@ -11,15 +11,32 @@ use Symfony\Component\HttpFoundation\Request;
 class AjaxController extends Controller
 {
     /**
-     * @Route("/admin/delete", name="admin_delete", options={"expose"=true})
+     * @Route("/admin/ajax", name="admin_ajax", options={"expose"=true})
      */
     public function deleteAjaxAction(Request $request)
     {
-//        $data = $request->request->all();
+//        $id=$request->request->get('imie');
+        $id = $request->request->all();
 
+        if($request->request->get('choice')=='del')
+        {
+            $id['del']=true;
+        }
 
+        if($request->request->get('choice')=='add')
+        {
+            $id['add']=true;
+        }
 
-        return new JsonResponse(array('a'=>'b'));
+        return new JsonResponse($id);
+    }
+
+    /**
+     * @Route("/grid", name="grid")
+     */
+    public function gridAction()
+    {
+        return $this->render(':admin:grid.html.twig');
     }
 
 }

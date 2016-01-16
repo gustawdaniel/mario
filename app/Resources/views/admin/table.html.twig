@@ -2,38 +2,46 @@
     {#{% dump(request) %}#}
     {#dd#}
 {#{% endif %}#}
-
+<form method="POST" action="">
 <table class="table">
     <tr>
         <td>Nazwa</td>
         <td>Aktualizuj</td>
         <td>Usuń</td>
-        {#<td>Aktualizuj</td>#}
     </tr>
-    {#<form method="POST" action="">#}
+
+    <tr class="my_hidden_row" id="0" hidden>
+        <td>
+            <textarea class="btn-block" rows="1" name="0"></textarea>
+        </td>
+        <td>
+            <input type="submit" id="0" name="act" value="Aktualizuj" class="btn btn-warning btn-block btn-sm">
+        </td>
+        <td>
+            <input type="submit" id="0" name="del" value="Usuń" class="btn btn-danger btn-block btn-sm">
+        </td>
+    </tr>
+
     {% for e in entity %}
-        <div id="row_{{ e.id }}">
-            <tr>
+        <tr class="my_row" id="{{ e.id }}">
                 <td>
-                    <textarea rows="1" name="{{ e.id }}">{{ e.name }}</textarea>
+                    <textarea class="btn-block" rows="1" name="{{ e.id }}">{{ e.name }}</textarea>
                 </td>
                 <td>
-                    <div class="btn btn-warning btn-block btn-sm">Aktualizuj</div>
+                    <input type="submit" id="{{ e.id }}" name="act" value="Aktualizuj" class="btn btn-warning btn-block btn-sm">
                 </td>
                 <td>
-                    <input type="submit" name="delete" value="Usuń" id="rm_{{ e.id }}" class="btn btn-danger btn-block btn-sm">
+                    <input type="submit" id={{ e.id }} name="del" value="Usuń" class="btn btn-danger btn-block btn-sm">
                 </td>
             </tr>
-        </div>
     {% endfor %}
-    {#</form>#}
 </table>
 <div class="row">
     <div class="col-sm-12">
-        <div class="btn btn-block btn-sm btn-success">Dodaj</div>
+        <input type="submit" name="add" value="Dodaj" class="btn btn-block btn-sm btn-success">
     </div>
-    {#<div class="col-sm-6">#}
-        {#<td><div class="btn btn-warning btn-block btn-sm">Aktualizuj</div></td>#}
-    {#</div>#}
 </div>
-
+    <input type="hidden" name="choice" id="choice" value="">
+    <input type="hidden" name="id" id="id" value="0">
+    <input type="hidden" name="table" id="offices" value="0">
+</form>

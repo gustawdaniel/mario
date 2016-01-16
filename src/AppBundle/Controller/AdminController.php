@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Offices;
 use Symfony\Component\Form\Form;
+use Ali\DatatableBundle\Util\Datatable;
+use Symfony\Component\HttpFoundation\Response;
 ///**
 // * @Route("/admin")
 // */
@@ -22,14 +24,7 @@ class AdminController extends Controller
         return $this->render(':admin:index.html.twig',array('request',$data));
     }
 
-//    USUNĄĆ!!!!!!!!!!!1
-    /**
-     * @Route("/admin/edit/{entity}", name="edit")
-     */
-    public function editAction($entity)
-    {
-        return $this->render(':admin:edit.html.twig', array('entity'=>$entity));
-    }
+
 
 
 
@@ -52,4 +47,5 @@ class AdminController extends Controller
             ->getForm()
             ;
     }
+
 }

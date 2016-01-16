@@ -82,9 +82,16 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
 
-#sonata_block:
-#    default_contexts: [cms]
-#    blocks:
-#        # Enable the SonataAdminBundle block
-#        sonata.admin.block.admin_list:
-#            contexts: [admin]
+# app/config/config.yml
+ali_datatable:
+    all:
+        action:           true
+        search:           false
+    js:
+        iDisplayLength: "10"
+        aLengthMenu: "[[5,10, 25, 50, -1], [5,10, 25, 50, 'All']]"
+        bJQueryUI: "false"
+        fnPreDrawCallback: |
+            function( e ) {
+                // you custom code goes here
+            }
