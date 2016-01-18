@@ -1,47 +1,33 @@
-{#{% if req is defined %}#}
-    {#{% dump(request) %}#}
-    {#dd#}
-{#{% endif %}#}
-<form method="POST" action="">
-<table class="table">
+{#ok#}
+{#{{ dump(content) }}#}
+
+{% if content %}
+<table class="table table-condensed table-hover">
+    <thead>
     <tr>
         <td>Nazwa</td>
-        <td>Aktualizuj</td>
-        <td>Usuń</td>
+        <td>Opis</td>
+        {#<td>Edytuj</td>#}
+        {#<td>Usuń</td>#}
     </tr>
-
-    <tr class="my_hidden_row" id="0" hidden>
-        <td>
-            <textarea class="btn-block" rows="1" name="0"></textarea>
-        </td>
-        <td>
-            <input type="submit" id="0" name="act" value="Aktualizuj" class="btn btn-warning btn-block btn-sm">
-        </td>
-        <td>
-            <input type="submit" id="0" name="del" value="Usuń" class="btn btn-danger btn-block btn-sm">
-        </td>
+    </thead>
+    <tbody>
+    {% for c in content %}
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.description }}</td>
+        <td><a href="{{ path('update_table', {'kind': c.kind,'id':c.id}) }}" class="btn-sm btn-info">Edytuj</a>
+            {#</td>#}
+        {% if kind != 'desc' %}
+        <td><a href="{{ path('delete_content',{'kind':c.kind,'id':c.id}) }}" class="btn-sm btn-danger">Usuń</a></td>
+        {% endif %}
     </tr>
-
-    {% for e in entity %}
-        <tr class="my_row" id="{{ e.id }}">
-                <td>
-                    <textarea class="btn-block" rows="1" name="{{ e.id }}">{{ e.name }}</textarea>
-                </td>
-                <td>
-                    <input type="submit" id="{{ e.id }}" name="act" value="Aktualizuj" class="btn btn-warning btn-block btn-sm">
-                </td>
-                <td>
-                    <input type="submit" id={{ e.id }} name="del" value="Usuń" class="btn btn-danger btn-block btn-sm">
-                </td>
-            </tr>
     {% endfor %}
+    </tbody>
 </table>
-<div class="row">
-    <div class="col-sm-12">
-        <input type="submit" name="add" value="Dodaj" class="btn btn-block btn-sm btn-success">
-    </div>
-</div>
-    <input type="hidden" name="choice" id="choice" value="">
-    <input type="hidden" name="id" id="id" value="0">
-    <input type="hidden" name="table" id="offices" value="0">
-</form>
+{% endif %}
+
+{% if kind != 'desc' %}
+    <a href="{{ path('add_content',{'kind':kind}) }}" class="btn btn-block btn-info">Dodaj</a>
+{% endif %}
+

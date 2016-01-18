@@ -1,9 +1,6 @@
 {% extends '::admin_layout.html.twig' %}
 
 {% block content %}
-
-
-
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -11,53 +8,55 @@
                     <div class="panel-heading">Wynajmowane obiekty</div>
                     <div class="panel-body">
                         <div>
-                            <ul class="nav nav-pills nav-justified">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Biura</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Place</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Magazyny</a></li>
-                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Inne Lokalizacje</a></li>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                                <li role="presentation" class="active"><a href="#office" aria-controls="office" role="tab" data-toggle="tab">Biura</a></li>
+                                <li role="presentation"><a href="#square" aria-controls="square" role="tab" data-toggle="tab">Place</a></li>
+                                <li role="presentation"><a href="#warehouse" aria-controls="warehouse" role="tab" data-toggle="tab">Magazyny</a></li>
+                                <li role="presentation"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">Inne</a></li>
                             </ul>
+
+                            <!-- Tab panes -->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                    <div id="sidebar">
-                                        {{ render(controller(
-                                        'AppBundle:Admin:offices',
-                                        { 'max': 3 }
-                                        )) }}
-                                    </div>
+                                <div role="tabpanel" class="tab-pane active" id="office">
+                                    {{ render(controller('AppBundle:Admin:table', {'kind': 'office'})) }}
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="profile">B</div>
-                                <div role="tabpanel" class="tab-pane fade" id="messages">C</div>
-                                <div role="tabpanel" class="tab-pane fade" id="settings">D</div>
+                                <div role="tabpanel" class="tab-pane fade" id="square">
+                                    {{ render(controller('AppBundle:Admin:table', {'kind': 'square'})) }}
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="warehouse">
+                                    {{ render(controller('AppBundle:Admin:table', {'kind': 'warehouse'})) }}
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="other">
+                                    {{ render(controller('AppBundle:Admin:table', {'kind': 'other'})) }}
+                                </div>
                             </div>
 
                         </div>
-
-                    </div>
-                </div>
-                <div class="panel panel-success">
-                    <div class="panel-heading">Treść strony</div>
-                    <div class="panel-body">
-                        <div class="btn btn-lg btn-danger">Telefony</div>
-                        <div class="btn btn-lg btn-danger">Pozostałe</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Formularz kontaktowy</div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Treść strony</div>
                     <div class="panel-body">
-                        <div class="btn btn-lg btn-success">Wiadomości</div>
-                    </div>
-                </div>
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Dokumentacja</div>
-                    <div class="panel-body">
-                        <div class="btn btn-lg btn-success">Dokumentacja</div>
+                        <div>
+                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                                <li role="presentation" class="active"><a href="#tel" aria-controls="tel" role="tab" data-toggle="tab">Telefony</a></li>
+                                <li role="presentation"><a href="#desc" aria-controls="desc" role="tab" data-toggle="tab">Opisy</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="tel">
+                                    {{ render(controller('AppBundle:Admin:table', {'kind': 'tel'})) }}
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="desc">
+                                    {{ render(controller('AppBundle:Admin:table', {'kind': 'desc'})) }}
+                                </div>
+                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 {% endblock %}

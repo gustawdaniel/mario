@@ -1,0 +1,32 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <a href="{{ path('homepage') }}" class="close-link pull-right"><i class="icon_close_alt2"></i></a>
+                    <h3 class="white text-center">Kontakt</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form.name,{'attr':{'placeholder':'Imie'}}) }}
+                    <br>
+                    {{ form_widget(form.mail,{'attr':{'placeholder':'Email'}}) }}
+                    <br>
+                    {{ form_widget(form.message,{'attr':{'placeholder':'Wiadomość'}}) }}
+                    <br>
+                    {{ form_widget(form.submit,{'attr':{'class':'btn-info btn-block'}}) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

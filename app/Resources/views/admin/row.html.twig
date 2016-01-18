@@ -1,0 +1,26 @@
+{% extends '::admin_layout.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                {{ form_start(form) }}
+                {% if kind == 'desc' %}
+                    <div class="alert alert-success" role="alert">
+                        {{ name }}
+                    </div>
+                {% else %}
+                    {{ form_row(form.name) }}
+                {% endif %}
+                {{ form_row(form.description) }}
+                {{ form_row(form.update, {'attr':{'class':'btn-block btn-success'}}) }}
+                {{ form_end(form)}}
+            </div>
+        </div>
+    </div>
+
+
+{#{{ dump(debug) }}#}
+
+{% endblock %}

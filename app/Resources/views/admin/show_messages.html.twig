@@ -1,0 +1,44 @@
+{% extends '::admin_layout.html.twig' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            {% if content %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Imie</td>
+                        <td>Email</td>
+                        <td>Czas</td>
+                        <td>Treść</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in content %}
+                    <tr>
+                        <td>{{ c.name }}</td>
+                        <td><a href="mailto:{{ c.mail }}">{{ c.mail }}</a></td>
+                        <td>{{ c.sendAt|date("g:ia d.m.Y") }}</td>
+                        <td>{{ c.message }}</td>
+                        <td><a href="{{ path('delete_message',{'id':c.id}) }}" class="btn-sm btn-danger">Usuń</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <div class="bs-callout bs-callout-info">
+                    <div class="alert alert-warning" role="alert">
+                        Nie ma wiadomości wysłanych przez formularz kontaktowy.
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{#{{ dump(debug) }}#}
+
+{% endblock %}

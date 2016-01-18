@@ -1,0 +1,289 @@
+{% extends '::admin_layout.html.twig' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h1>Dokumentacja</h1>
+            <h3>Dla urzytkownika</h3>
+            <h4>Opis opcji</h4>
+            <p>Po wejściu na adres <a href="{{ url('admin') }}">{{ url('admin') }}</a> mamy możemy zrobić następujące rzeczy</p>
+            <ul>
+                <li>Klinąć na <kbd>Panel Administratora</kbd>na pasku na górze po lewej</li>
+                <p>Przejdziemy wtedy do głównego widoku, który właśnie omawiamy</p>
+                <li>Kliknąć <kbd>Pomoc</kbd> na pasku na górze po lewej</li>
+                <p>Zobsczymy wtedy dane kontaktowe do twórcy strony i możemy dzwonić albo pisać aby coś wyjaśnić</p>
+                <li>Kliknąć <kbd>Dokumentacja</kbd> na pasku na górze</li>
+                <p>Przejdziemy wtedy do tej strony</p>
+                <li>Kliknąć <kbd>Wiadomości</kbd> na pasku na górze po prawej stronie</li>
+                <p>Zobaczymy listę wiadmości, które zostały wysłane do nas przez formularz kontatkowy</p>
+                <li>Kliknąć <kbd>Wyloguj</kbd> na pasku na góry po prawej stronie</li>
+                <p>Wylogowanie sprawi, że przejdziemy do strony którą widzą urzytkownicy
+                    <a href="{{ path('homepage') }}">{{ url('homepage') }}</a>. Aby powrócić do widoku admina
+                należy w pasku przeglądarki dopisać <kbd>/admin</kbd> do adresu strony i zalogować się podając
+                login oraz hasło. Jeśli nie znasz swojego loginu i hasła skontaktruj się z twórcą strony</p>
+            </ul>
+            <h4>Opis miejsc</h4>
+            <ul>
+                <li>Biura</li>
+                <li>Place</li>
+                <li>Magazyny</li>
+                <li>Inne</li>
+            </ul>
+            <p>Zestaw kart po lewej stroni umożliwa usówanie i dodawaniae elementów.</p>
+            <p>Każdy element ma nazwę i opis. Nie poinny to być długie teksty, ponieważ strona zbudowana jest
+            w ten sposób, że zbyt długie teksty, będą wychodzić za ramkę. Jeśli chcesz umieścić tekst, który
+            po odświerzeniu strony źle wygląda skontaktuj się z programistą odpowiedzialnym za stronę</p>
+            <p>Ostatni element jest wyjątkowy, jeśli usuniesz wszystkie miejsca z zakładki "Inne" strona przebuduje się
+            tak aby nie wyświetlać wogóle tej kategorii</p>
+            <p>Jeśli usuniesz wszystkie elementy z jednej z pozostałych kategorii to znikną one z obrazka,
+                ale obrazek nie zniknie</p>
+            <p>Jeśli nie chesz aby biuro miało nazwę, zostaw puste pole, po porstu się ono nie wyświetli, ale
+            opis zostanie wyświetlony.</p>
+            <h4>Treść strony</h4>
+            <ul>
+                <li>Telefony</li>
+                <li>Opisy</li>
+            </ul>
+            <p>Tabela telefony przypomina trochę table z miejscami, w zależności od liczby telefonów zmienia się
+            słowo na stronie w nagłówku kontaktu telefonicznego, dla 0 - znika, dla 1-brzmi "telfon", dla
+            2 - "telefony", każdy telefon ma imie pracownika, ale nie musisz go podawać, ma też wyświetlany numer</p>
+            <p>Tabela opisów zawiera zbiur elementów stałych na stronie, które jednak, mogą mieć modyfikowaną treść</p>
+            <p>Aby przedstawić przykład, weżmy jej pierwszy element:</p>
+            <ul>
+                <li>nazwa_firmy</li>
+            </ul>
+            Intuicyjnie rozumiemy, że nie może być kilku nazw firmy, więc pola tego nie można dodać, można jednak zmienić
+            jego wartość. Jeśli z jakichś względów nie chcesz go pokazywać możesz zmienić jego wartość na puste pole,
+            ale nie możesz go usunąć.
+            <p>Pola w tabeli opisy wyświetlają się na stronie w różnych miejscacha. Opiszę gdzie wyświetla się które,
+            aby łatwiej było je edytować. Ważne jest, aby zawsze po edycji pól w panelu aministratoro przyjrzeć się
+            stroni, aby upewnić się, że wprowadzone zmieny dobrze się komponują. Czy nasze teksty nie są za długie,
+            albo nieproporcjonalnie któtkie.</p>
+            <h4>Domyślne wartości pól w tabeli Opisy</h4>
+            <pre>
+| nazwa_firmy      | Fal-Bruk                                                   |
+| opis_firmy       | Miejsce na dłuższy tekst np 1 akapit - około 3-5 zdań.     |
+| place            | Opis placy - 1 zdanie                                      |
+| biura            | Opis biur - 1 zdanie                                       |
+| inne             | Opis innych lokalizacji - 1 zdanie                         |
+| garaze_warsztaty | Opis warsztatów - 1 zdanie                                 |
+| dane_firmy       | 2016 Spółka ... dane spółkie                               |
+| adres            | Miejsce na adres firmy                                     |
+| naglowek         | Nagłówek na początku strony                                |
+| tekst1           | Wynajme bezpośredni! Nie jesteśmy agencją.                 |
+| tekst1_podpis    | #nie płacisz prowizji                                      |
+| tekst2           | X lat doświadczenia!                                       |
+| tekst2_podpis    | #czujesz się bezpiecznie                                   |
+| tekst3           | Około Y klientów!                                          |
+| tekst3_podpis    | #jesteś traktowany profesjolanie                           |
+            </pre>
+            <h4>Gdzie pola z tabeli opisy znajdują się na stronie</h4>
+            <ul>
+                <li>nazwa_firmy</li>
+                <p>Nad nagłówkie na stronie startowej</p>
+                <li>opis_firmy</li>
+                <p>Pod słowem "Oferta" poniżej kolorowych obraków z obiektami</p>
+                <ul>
+                    <li>place</li>
+                    <li>biura</li>
+                    <li>inne</li>
+                    <li>garaze_warsztaty</li>
+                </ul>
+                <p>Wszystkie 4 powyższe pola pokazują się po najechaniu myszką na białe kwadraty z takimi
+                nazwami pod ofetą a powyżej niebieskiego skońne tła</p>
+                <li>dane_firmy</li>
+                <p>na samysm dole w stopce strony</p>
+                <li>adres</li>
+                <p>w stopce za napisem "nasz adres"</p>
+                <li>naglowek</li>
+                <p>Jest to napis na stronie startowej, który się wypisuje zaraz po załadowaniu strony</p>
+                <ul>
+                    <li>tekst1</li>
+                    <li>tekst1_podpis</li>
+                    <li>tekst2</li>
+                    <li>tekst2_podpis</li>
+                    <li>tekst3</li>
+                    <li>tekst3_podpis</li>
+                </ul>
+                <p>na niebieskim skońnym tle między ofertą a stopką, aby wyświetlić dwa pozostałe należy skorzyać
+                z nawigacji za pomocą przesunięcia palcem na urządzeniach dotykowych, albo paska nawigacji
+                z kwadratów.</p>
+            </ul>
+            <h3>Dla programisty</h3>
+            <h4>Struktura bazy danych</h4>
+            <pre>
+mysql> show tables;
++-----------------+
+| Tables_in_mario |
++-----------------+
+| content         |
+| fos_user        |
+| message         |
++-----------------+
+3 rows in set (0,00 sec)
+
+mysql> desc content;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(100) | YES  |     | NULL    |                |
+| kind        | varchar(20)  | YES  |     | NULL    |                |
+| description | longtext     | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0,00 sec)
+
+mysql> desc message;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(100) | NO   |     | NULL    |                |
+| mail    | varchar(100) | NO   |     | NULL    |                |
+| message | longtext     | NO   |     | NULL    |                |
+| send_at | datetime     | NO   |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+5 rows in set (0,00 sec)
+            </pre>
+            <h4>Routing</h4>
+            <pre>
+ ----------------------------------- ---------- ----------------------------------
+  Name                                Method     Path
+ ----------------------------------- ---------- ----------------------------------
+  admin                               ANY        /admin
+  table                               ANY        /admin/table/{kind}
+  delete_content                      ANY        /admin/table/{kind}/delete/{id}
+  add_content                         ANY        /admin/table/{kind}/add
+  update_table                        ANY        /admin/table/{kind}/update/{id}
+  show_messages                       ANY        /admin/messages
+  delete_message                      ANY        /admin/message/delete/{id}
+  help                                ANY        /admin/help
+  doc                                 ANY        /admin/doc
+  homepage                            ANY        /
+  contact                             ANY        /message
+  fos_user_security_login             GET|POST   /login
+  fos_user_security_check             POST       /login_check
+  fos_user_security_logout            GET        /logout
+  fos_user_profile_show               GET        /profile/
+  fos_user_profile_edit               GET|POST   /profile/edit
+  fos_user_registration_register      GET|POST   /register/
+  fos_user_registration_check_email   GET        /register/check-email
+  fos_user_registration_confirm       GET        /register/confirm/{token}
+  fos_user_registration_confirmed     GET        /register/confirmed
+  fos_user_resetting_request          GET        /resetting/request
+  fos_user_resetting_send_email       POST       /resetting/send-email
+  fos_user_resetting_check_email      GET        /resetting/check-email
+  fos_user_resetting_reset            GET|POST   /resetting/reset/{token}
+  fos_user_change_password            GET|POST   /profile/change-password
+  fos_js_routing_js                   ANY        /js/routing.{_format}
+ ----------------------------------- ---------- ----------------------------------
+            </pre>
+            <h4>Config</h4>
+            <pre>
++----------------------------+------------------------+
+| Bundle name                | Extension alias        |
++----------------------------+------------------------+
+| FrameworkBundle            | framework              |
+| SecurityBundle             | security               |
+| TwigBundle                 | twig                   |
+| MonologBundle              | monolog                |
+| SwiftmailerBundle          | swiftmailer            |
+| DoctrineBundle             | doctrine               |
+| SensioFrameworkExtraBundle | sensio_framework_extra |
+| AppBundle                  |                        |
+| AsseticBundle              | assetic                |
+| FOSUserBundle              | fos_user               |
+| FOSJsRoutingBundle         | fos_js_routing         |
+| AliDatatableBundle         | ali_datatable          |
+| DebugBundle                | debug                  |
+| WebProfilerBundle          | web_profiler           |
+| SensioDistributionBundle   | sensio_distribution    |
+| SensioGeneratorBundle      |                        |
+| DoctrineFixturesBundle     |                        |
++----------------------------+------------------------+
+            </pre>
+            <h4>Koncepcja</h4>
+            <p>Dane w aplikacji dzielą się na następujące kategorie:</p>
+            <ul>
+                <li>Urzytkownicy</li>
+                <ul>
+                    <li>Dane obsługiwane prze fos_user_bundle</li>
+                </ul>
+                <li>Wiadomości</li>
+                <ul>
+                    <li>nadawca</li>
+                    <li>email</li>
+                    <li>wiadomość</li>
+                    <li>czas wysyłki</li>
+                </ul>
+                <li>Informacje</li>
+                <ul>
+                    <li>Biura</li>
+                    <ul>
+                        <li>nazwa</li>
+                        <li>opis</li>
+                    </ul>
+                    <li>Magazyny</li>
+                    <ul>
+                        <li>nazwa</li>
+                        <li>opis</li>
+                    </ul>
+                    <li>Place</li>
+                    <ul>
+                        <li>nazwa</li>
+                        <li>opis</li>
+                    </ul>
+                    <li>Inne lokalizacje</li>
+                    <ul>
+                        <li>nazwa</li>
+                        <li>opis</li>
+                    </ul>
+                    <li>Teksty na stronę</li>
+                    <ul>
+                        <li>klucz</li>
+                        <li>wartość</li>
+                    </ul>
+                    <li>Telefony do pracowników</li>
+                    <ul>
+                        <li>pracownik</li>
+                        <li>numer</li>
+                    </ul>
+                </ul>
+            </ul>
+            <p>Wszystkie <kbd>informacie</kbd> zostały zapisane do tabeli <kbd>Content</kbd></p>
+            <p>Rodzaje informacji są zapisywane jako wielkości tekstowe w polu <kbd>kind</kbd> tabeli <kbd>Content</kbd></p>
+            <p>Na podstawie pola <kbd>kind</kbd> dokonuje się większość wyszukań.</p>
+            <p>Pozostałe pola tabeli <kbd>Content</kbd> spełniają role odpowiednio pierwszej i drugiej własności
+            każdego rodzaju <kbd>Informacji</kbd></p>
+            <hr>
+            <h4>Mamy dwa controllery</h4>
+            <ul>
+                <li>Admin</li>
+                <li>Default</li>
+            </ul>
+            <p>Kontroller Admin odpowiada za wszystkie akcje admina, usówanie, dodawanie, zmienianie itd. Kródko mówiąc
+            jest to graficzna konfiguracja strony zabezpieczona tak, aby nic nie zepsuć. Zespucie mogło by mieć miejsce
+            jeśli admin dodał by na przykład zbyt długie teksty, albo usunął niektóre potrzebne zmienne, np biura.</p>
+            <p>Kontroller Default odpowiada za obsługę strony i formularza kontatkowego od strony usera.</p>
+            <h4>Trzy katalogi z widokami</h4>
+            <ul>
+                <li>admin w app</li>
+                <li>default w app</li>
+                <li>Security w AppBundle</li>
+            </ul>
+            <p>admin jak nazwa wskazuje zawiera widoki admina, w tym tą dokumentację, pomoc(moje dane kontaktowe),
+            główny widok panelu, widok pojedyńczego dodawania, albo aktualizacji zmiennej (row), widok wiadmości,
+            które były wysłane przez formularz kontakowy (show_messages), widok tabeli. Wszystkie widoki admina
+            dziedziczą po admin_layout</p>
+            <p>Widok defaut ma trzy pliki, index - strona, contact - formularz kontaktowy, succes - powtwierdzenie
+            wysłania, dziedziczy po layout</p>
+            <p>Security ma jeden widok - logowanie</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

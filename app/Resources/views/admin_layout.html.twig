@@ -19,11 +19,9 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <!-- Static navbar -->
-        <nav class="navbar bg-primary">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+
+        <nav class="navbar container-fluid  navbar-static-top navbar-inverse">
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
@@ -33,33 +31,23 @@
                     </button>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="http://gustawdaniel.pl">Pomoc</a></li>
+                        <li><a href="{{ path('admin') }}">Panel Administratora</a></li>
+                        <li><a href="{{ path('help') }}">Pomoc</a></li>
+                        <li><a href="{{ path('doc') }}">Dokumentacja</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        {#// class="btn-danger"#}
+                        <li><a href="{{ path('show_messages') }}">Wiadmości</a></li>
                         <li><a href="{{ path('fos_user_security_logout') }}">Wyloguj</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
         </nav>
-    </div>
 
     {% block content %}{% endblock %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Kontakt do twórcy strony</div>
-                    <div class="panel-body">
-                        <div class="btn btn-lg btn-success btn-block">Zadaj pytanie.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 {% endblock %}
 
@@ -75,7 +63,8 @@
 {% block javascripts %}
     {% javascripts
         'bundles/app/js/01_jquery-1.11.1.min.js'
-        'bundles/app/js/03_bootstrap.min.js'%}
+        'bundles/app/js/03_bootstrap.min.js'
+        'bundles/app/js/08_repair_navs.js'%}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

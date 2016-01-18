@@ -196,9 +196,7 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 	display: inline-block;
 	padding: 15px 30px;
 	color: white;
-	border: 2px solid transparent;
 	border-radius: 2px;
-	background: transparent;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
@@ -319,30 +317,32 @@ section {
 	background-position: 0% 0%;
 }
 
-.intro-table-first {
+/*.intro-table-hover h4 {*/
+	/*-webkit-transform: translateY(170px);*/
+	/*transform: translateY(170px);*/
+	/*-webkit-transition: -webkit-transform 0.3s;*/
+	/*transition: transform 0.3s;*/
+/*}*/
+
+/*.intro-table-hover:hover {*/
+	/*background-image: url('../img/table-2-hover.jpg');*/
+	/*background-position: 50% 50%;*/
+/*}*/
+
+.intro-table-1 {
 	background-image: url('../img/table-1.jpg');
 }
 
-.intro-table-hover {
-	-webkit-transition: background-image 0.3s ease, background-position 0.3s;
-	transition: background-image 0.3s ease, background-position 0.3s;
+.intro-table-2 {
 	background-image: url('../img/table-2.jpg');
 }
 
-.intro-table-hover h4 {
-	-webkit-transform: translateY(170px);
-	transform: translateY(170px);
-	-webkit-transition: -webkit-transform 0.3s;
-	transition: transform 0.3s;
-}
-
-.intro-table-hover:hover {
-	background-image: url('../img/table-2-hover.jpg');
-	background-position: 50% 50%;
-}
-
-.intro-table-third {
+.intro-table-3 {
 	background-image: url('../img/table-3.jpg');
+}
+
+.intro-table-4 {
+	background-image: url('../img/table-4.jpg');
 }
 
 .intro-table-hover .expand {
@@ -925,7 +925,6 @@ footer .social-footer li:hover a {
 
 .btn.btn-submit:hover {
 	color: #00a8ff;
-	background: #fff;
 }
 
 /* Mobile Nav */
