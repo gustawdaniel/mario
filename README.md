@@ -1,68 +1,101 @@
-Symfony Standard Edition
+Instrukcja instalacji
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+[1] Pobieramy na dysk
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+    git clone https://github.com/gustawdaniel/mario.git 
 
-What's inside?
---------------
+[2] Przechodzimy do katalogu
 
-The Symfony Standard Edition is configured with the following defaults:
+    cd mario
 
-  * An AppBundle you can use to start coding;
+[3] Instalujemy composer
 
-  * Twig as the only configured template engine;
+    sudo apt-get install composer
 
-  * Doctrine ORM/DBAL;
+lub jeśli się nie uda
+```
+php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
+php -r "if (hash('SHA384', file_get_contents('composer-setup.php')) === 'fd26ce67e3b237fffd5e5544b45b0d92c41a4afe3e3f778e942e43ce6be197b9cdc7c251dcde6e2a52297ea269370680') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); }"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
 
-  * Swiftmailer;
+[4] Instalujemy pakiet do odbsługi mysql w php5, klienta mysql oraz serwer mysql
+```
+apt-get install php5-mysql
+sudo apt-get install mysql-client
+sudo apt-get install mysql-server
+```
+Potwierdzamy trzy razy za pomocą enter (nic nie wpisując - na komputerze domowym, nigdy nie robimy tak na serwerze!)
 
-  * Annotations enabled for everything.
+[5] Pobieramy biblioteki zewnętrzne
 
-It comes pre-configured with the following bundles:
+    composer install
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+Na koniec potwierdzamy za każdym razem wciskając enter
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+[6] Tworzymy bazę danych
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+     php bin/console doctrine:database:create
+     
+[7] Tworzymy tabele w bazie
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+    php bin/console doctrine:schema:update --force
+    
+[8] Wypełniamy bazę danych przykładowymi danymi
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+    php bin/console doctrine:fixtures:load
+    
+[9] Tworzymy dowiązania symboliczne źródeł do katalogu ze stroną
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+    php bin/console assets:install --symlink web
+    
+Nie zadziała przy niektórych sposobach organizacji danych na dyskach, które nie wspierają takich dowiązań, prawdopodobnie fat
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+[10] Zrzucamy skrypty i style do katalogu web za pomocą assetic
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+     php bin/console assetic:dump
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+[11] Nigdy nie zaszkodzi wyczyścić cache
 
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
+    php bin/console cache:clear
+    
+[12] Tworzymy urzytkownika strony
 
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
+    php bin/console fos:user:create admin
 
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
+Podajemy adres email na który przychodziły by resety hasła
+Oraz hasło
 
-Enjoy!
+[13] Nadajemy urzytkownikowi prawa admina
 
-[1]:  https://symfony.com/doc/3.0/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.0/book/doctrine.html
-[8]:  https://symfony.com/doc/3.0/book/templating.html
-[9]:  https://symfony.com/doc/3.0/book/security.html
-[10]: https://symfony.com/doc/3.0/cookbook/email.html
-[11]: https://symfony.com/doc/3.0/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/3.0/bundles/SensioGeneratorBundle/index.html
+    php bin/console fos:user:promote admin
+
+wpisujemy: ```ROLE_ADMIN```   
+[14] Włączamy serwer
+
+    php bin/console server:run
+    
+[15] Po zalogowaniu możemy czytać dokumentację
+
+    
+
+Instrukcja obsługi
+===================
+
+Strona jest dostępna pod adresem
+
+http://127.0.0.1:8000
+
+panel admina pod adresem
+
+http://127.0.0.1:8000/admin
+
+Login: admin
+Hasło: <wybrane w punkcie 12>
+
+Dokumentacja dostępna dla admina pod adresem
+
+
+http://127.0.0.1:8000/admin/doc
